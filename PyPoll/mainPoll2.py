@@ -37,14 +37,25 @@ with open(csvpath, newline='') as csvfile:
         voters.append(column[0])
 
 total_votes = (len(voters))
+
 #count each candidate in the list
 Khan = int(candidates.count("Khan"))
 Correy = int(candidates.count("Correy"))
 Li = int(candidates.count("Li"))
 O_Tooley = int(candidates.count("O'Tooley"))
+#print(Khan)
+#print(Correy)
+#print(Li)
+#print(O_Tooley)
 
-print(Khan)
+#Find percentage of votes each candidate won
 
+Khan_percent = Khan / total_votes
+Correy_percent = Correy / total_votes
+Li_percent = Li / total_votes
+O_Tooley_percent = O_Tooley / total_votes
+
+print("{:.3%}".format(Khan_percent))
 
 print ("Election Results")
 print ("-----------------------------------------------")
