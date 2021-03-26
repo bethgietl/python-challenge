@@ -75,16 +75,13 @@ print ("-----------------------------------------------")
 print(f"Total Months: {total_months}")
 print(f"Total: ${total_profit}")
 print(f"Average Change: ${round(avg_changes, 2)}")
-print(f"Greatest Increase in Profits: ${max(greatest_increase)}")
-print(f"Greatest Decrease in Profits: ${min(greatest_decrease)}")
+print(f"Greatest Increase in Profits: {greatest_increase}")
+print(f"Greatest Decrease in Profits: {greatest_decrease}")
+
 
 #print(avg_changes)
 #print(greatest_decrease)
 #print(greatest_increase)
-
-
-
-
 #print(total_months)      
 #print(total_profit)
 #print(changes_in_profit)   
