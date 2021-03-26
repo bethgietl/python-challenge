@@ -86,7 +86,6 @@ print("-------------------------------------")
 print(f"Winner: {Winner}")
 print("-------------------------------------")
 
-
 f = open(txtpath,"w+")
 print("Election Results", file=f)
 print("-------------------------------------", file=f)

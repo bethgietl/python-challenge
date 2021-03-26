@@ -1,82 +1,73 @@
-#Your task is to create a Python script that analyzes the records to calculate each of the following:
-        #Financial Analysis
-        #-----------------------------------------
-    #The total number of months included in the dataset
-        #Total Months: 86
-    #The net total amount of "Profit/Losses" over the entire period
-        #Total: 38382578
-    #Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
-        #Average Change: $-2315.12
-    #The greatest increase in profits (date and amount) over the entire period
-        #Greatest Increase in Profits: Feb-2012 ($1926159)
-    #The greatest decrease in losses (date and amount) over the entire period
-        #Greatest Decrease in Profits: Sep-2013 ($-2196167)
+#homework 2.8 shows how to import
+    # First import the os module. This will allow us to create file paths across operating systems
 import os
+    # Module for reading CSV files
 import csv
 
 csvpath = os.path.join("Resources", "budget_data.csv")
 txtpath = os.path.join("Analysis", "Financial_Analysis.txt")
 
-months = []
+# Used Homework 2.9-Netflix to start the loop
+    #Set Variables [] empty lists and helps to append
+total_months = 0
+#profit_losses = 0
 total_profit = 0
 changes_in_profit = []
 date = []
-number_months = 0
+#total_changes = []
 avg_changes = 0
+number_months = 0
 greatest_increase = ["1900",0]
-greatest_decrease = ["1900",99999999999999999999999999]
+greatest_decrease = ["1900",999999999999999999999999999999999999]
+#define as a string
+#date_increase = ""
+#date_decrease = ""
 
-#       1. Open the path, CSV reader specifies delimiter and variable that holds contents, Read the header and first rows
+# Open the CSV - use the newline argument per a classmate and research to keep data in empty strings from being altered 
 with open(csvpath, newline='') as csvfile:
+        #CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-
-    csv_header = next(csvreader)   
-    first_data = next(csvreader)
-    
+        # Read the header row first (skip this step if there is now header)
+    csv_header = next(csvreader)
+    first_data = next(csvreader)   
+    #print out total months (col. 0)
     total_months = 1
-    total_profit += int(first_data[1])
-    previous_net = int(first_data[1])
+    #print out total profit/losses (col. 1), used int since the pl is a number (no decimals)
+    total_profit += int(first_data[1]) #867884
+    previous_net = int(first_data[1]) #867884
+    #previous_format_net = "${:}".format(previous_net)
 
-#       2. to find the total months start with appending the months list to col. 0 (Months) then use the len funtion to find the length of the month list    
+        # Read each row of data after the header
     for row in csvreader:
-        months.append(row[0])
-    
-    total_months = (len(months))+1
-#print(total_months) #86
-#print(total_profit) #= 867884
-#print(previous_net) = 867884
-#       3. net the total amount of "Profit/Losses" over the entire period sum
-    total_profit += int(row[1]) #867884 + 984655 + 322013 + -69417
-    net_profit_change = int(row[1]) - previous_net #-69417 - 322013
-    changes_in_profit.append (net_profit_change) #[116771, -662642, -391430]
-    previous_net = int(row[1]) #-69417
-    if net_profit_change > greatest_increase[1]:  #["1900", 0]
-        greatest_increase[0] = row[0] #[Feb-10, 0]
-        greatest_increase[1] = net_profit_change #[Feb-10,116771]
-    
-if net_profit_change < greatest_decrease[1]:  #["1900",999999999999999999999999999999999999]
+        #start on row 3 so can subtract from above
+        total_months = total_months + 1 #4
+        
+        total_profit += int(row[1]) #867884 + 984655 + 322013 + -69417
+        #total_format_profit = "${:,.0f}".format(total_profit)
+        total_format_profit = "${:}".format(total_profit)
+#print(total_format_profit)
+        net_profit_change = int(row[1]) - previous_net 
+        #net_format_profit_change = "${:}".format(net_profit_change)
+#print(net_format_profit_change)
+        changes_in_profit.append (net_profit_change) #[116771, -662642, -391430]
+#print(changes_in_profit)
+        previous_net = int(row[1])
+
+        if net_profit_change > greatest_increase[1]:  #["1900", 0]
+            greatest_increase[0] = row[0] #[Feb-10, 0]
+            greatest_increase[1] = net_profit_change #[Feb-10,116771]
+        
+        if net_profit_change < greatest_decrease[1]:  #["1900",999999999999999999999999999999999999]
             greatest_decrease[0] = row[0] #[Feb-10, 0]
             greatest_decrease[1] = net_profit_change #[Feb-10,116771]
 
-avg_changes = sum(changes_in_profit) / len(changes_in_profit)
+print(greatest_increase)
 
 print ("Financial Analysis")
 print ("-----------------------------------------------")
 print(f"Total Months: {total_months}")
-print(f"Total: ${total_profit}")
+print(f"Total: {total_format_profit}")
 print(f"Average Change: ${round(avg_changes, 2)}")
 print(f"Greatest Increase in Profits: {greatest_increase}")
 print(f"Greatest Decrease in Profits: {greatest_decrease}")
-
-f = open(txtpath,"w+")
-print ("Financial Analysis", file=f)
-print ("-----------------------------------------------", file=f)
-print(f"Total Months: {total_months}", file=f)
-print(f"Total: ${total_profit}", file=f)
-print(f"Average Change: ${round(avg_changes, 2)}", file=f)
-print(f"Greatest Increase in Profits: {greatest_increase}", file=f)
-print(f"Greatest Decrease in Profits: {greatest_decrease}", file=f)
-f.close
-
-
-
+#print(f"Average Change: ${round(avg_changes, 2)}")
