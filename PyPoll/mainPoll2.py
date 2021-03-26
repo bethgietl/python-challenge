@@ -49,14 +49,23 @@ O_Tooley = int(candidates.count("O'Tooley"))
 #print(O_Tooley)
 
 #Find percentage of votes each candidate won
-
 Khan_percent = Khan / total_votes
+Khan_format_percent = "{:.3%}".format(Khan_percent)
 Correy_percent = Correy / total_votes
+Correy_format_percent = "{:.3%}".format(Correy_percent)
 Li_percent = Li / total_votes
+Li_format_percent = "{:.3%}".format(Li_percent)
 O_Tooley_percent = O_Tooley / total_votes
+O_Tooley_format_percent = "{:.3%}".format(O_Tooley_percent)
 
-print("{:.3%}".format(Khan_percent))
+#print("{:.3%}".format(Khan_percent))
 
-print ("Election Results")
-print ("-----------------------------------------------")
+print("Election Results")
+print("-----------------------------------------------")
 print(f"Total Votes: {total_votes}")
+print("-----------------------------------------------")
+print(f"Khan: {Khan_format_percent}")
+print(f"Correy: {Correy_format_percent}")
+print(f"Li: {Li_format_percent}")
+print(f"O'Tooley: {O_Tooley_format_percent}")
+print("-----------------------------------------------")
