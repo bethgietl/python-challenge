@@ -63,12 +63,24 @@ O_Tooley_format_percent = "{:.3%}".format(O_Tooley_percent)
 
 #print("{:.3%}".format(Khan_percent))
 
+#find the winner based on popular vote - go through each scenario if x > y: winner = "name"
+if Khan > Correy > Li > O_Tooley:
+    Winner = "Khan"
+elif Correy > Khan > Li > O_Tooley:
+    Winner = "Correy"
+elif Li > Correy > Khan > O_Tooley:
+    Winner = "Li"
+elif O_Tooley > Li > Correy > Khan:
+    Winner = "O'Tooley"
+
 print("Election Results")
 print("-----------------------------------------------")
 print(f"Total Votes: {total_votes}")
 print("-----------------------------------------------")
 print(f"Khan: {Khan_format_percent} ({Khan}) ")
-print(f"Correy: {Correy_format_percent}")
-print(f"Li: {Li_format_percent}")
-print(f"O'Tooley: {O_Tooley_format_percent}")
+print(f"Correy: {Correy_format_percent} ({Correy})")
+print(f"Li: {Li_format_percent} ({Li})")
+print(f"O'Tooley: {O_Tooley_format_percent} ({O_Tooley})")
+print("-----------------------------------------------")
+print(f"Winner: {Winner}")
 print("-----------------------------------------------")
