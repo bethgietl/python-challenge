@@ -18,9 +18,10 @@ import os
 import csv
 
 # Counter is used for the bonus solution
-from collections import Counter
+#from collections import Counter
 
 csvpath = os.path.join("Resources", "election_data.csv")
+txtpath = os.path.join("Analysis", "Voter_Analysis.txt")
 
 candidates = []
 voters = []
@@ -30,7 +31,7 @@ with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
             # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    first_data = next(csvreader)   
+    #first_data = next(csvreader)   
 
     for column in csvreader:
         candidates.append(column[2])
@@ -74,13 +75,28 @@ elif O_Tooley > Li > Correy > Khan:
     Winner = "O'Tooley"
 
 print("Election Results")
-print("-----------------------------------------------")
+print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
-print("-----------------------------------------------")
+print("-------------------------------------")
 print(f"Khan: {Khan_format_percent} ({Khan}) ")
 print(f"Correy: {Correy_format_percent} ({Correy})")
 print(f"Li: {Li_format_percent} ({Li})")
 print(f"O'Tooley: {O_Tooley_format_percent} ({O_Tooley})")
-print("-----------------------------------------------")
+print("-------------------------------------")
 print(f"Winner: {Winner}")
-print("-----------------------------------------------")
+print("-------------------------------------")
+
+
+f = open(txtpath,"w+")
+print("Election Results", file=f)
+print("-------------------------------------", file=f)
+print(f"Total Votes: {total_votes}", file=f)
+print("-------------------------------------", file=f)
+print(f"Khan: {Khan_format_percent} ({Khan})", file=f)
+print(f"Correy: {Correy_format_percent} ({Correy})", file=f)
+print(f"Li: {Li_format_percent} ({Li})", file=f)
+print(f"O'Tooley: {O_Tooley_format_percent} ({O_Tooley})", file=f)
+print("-------------------------------------", file=f)
+print(f"Winner: {Winner}", file =f)
+print("-------------------------------------", file=f)
+f.close
