@@ -78,6 +78,16 @@ print(f"Average Change: ${round(avg_changes, 2)}")
 print(f"Greatest Increase in Profits: {greatest_increase}")
 print(f"Greatest Decrease in Profits: {greatest_decrease}")
 
+f = open(txtpath,"w+")
+print ("Financial Analysis", file=f)
+print ("-----------------------------------------------", file=f)
+print(f"Total Months: {total_months}", file=f)
+print(f"Total: ${total_profit}", file=f)
+print(f"Average Change: ${round(avg_changes, 2)}", file=f)
+print(f"Greatest Increase in Profits: {greatest_increase}", file=f)
+print(f"Greatest Decrease in Profits: {greatest_decrease}", file=f)
+f.close
+
 
 #print(avg_changes)
 #print(greatest_decrease)
@@ -108,13 +118,3 @@ print(f"Greatest Decrease in Profits: {greatest_decrease}")
             # Determine percent of review left to 2 decimal places
         #percent = round(int(row[6]) / int(row[5]), 2)
         #review_percent.append(percent)       
-
-
-#print ("Financial Analysis")
-#print ("-----------------------------------------------")
-#print(f"Total Months: {total_months}")
-#print(f"Total: ${total_pl}")
-#print(f"Average Change: ${avg_changes}")
-#print(f"Greatest Increase in Profits: ${greatest_incrase}")
-#print(f"Greatest Decrease in Profits: ${greatest_decrease}")
-    
