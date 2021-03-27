@@ -40,9 +40,9 @@ with open(csvpath, newline='') as csvfile:
     first_data = next(csvreader)   
     #print out total months (col. 0)
     total_months = 1
-    #print out total profit/losses (col. 1), used int since the pl is a number (no decimals)
-    total_profit += int(first_data[1]) #867884
-    previous_net = int(first_data[1]) #867884
+    #print out total profit/losses (col. 1), used int (integer) since the profit/losses are numbers (no decimals)
+    total_profit += int(first_data[1]) 
+    previous_net = int(first_data[1]) 
 
         # Read each row of data after the header
     for row in csvreader:
