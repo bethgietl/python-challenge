@@ -42,7 +42,7 @@ total_votes = (len(voters))
 Khan = int(candidates.count("Khan"))
 Correy = int(candidates.count("Correy"))
 Li = int(candidates.count("Li"))
-O_Tooley = int(candidates.count("O'Tooley"))
+OTooley = int(candidates.count("O'Tooley"))
 #print(Khan)
 #print(Correy)
 #print(Li)
@@ -58,20 +58,20 @@ Correy_format_percent = "{:.3%}".format(Correy_percent)
 Li_percent = Li / total_votes
 Li_format_percent = "{:.3%}".format(Li_percent)
 
-O_Tooley_percent = O_Tooley / total_votes
-O_Tooley_format_percent = "{:.3%}".format(O_Tooley_percent)
+OTooley_percent = O_Tooley / total_votes
+OTooley_format_percent = "{:.3%}".format(O_Tooley_percent)
 
 #print("{:.3%}".format(Khan_percent))
 
 #Find the winner with if/elif, go through each candidate count and if candidate 1 is greater than candidate 2 > cand 3, 4. 
 # then print winner "name", do the same on next line with candidate 2 in start position, until all 4 scenarios are looked at
-if Khan > Correy > Li > O_Tooley:
+if Khan > Correy > Li > OTooley:
     Winner = "Khan"
-elif Correy > Khan > Li > O_Tooley:
+elif Correy > Khan > Li > OTooley:
     Winner = "Correy"
-elif Li > Khan > Correy > O_Tooley:
+elif Li > Khan > Correy > OTooley:
     Winner = "Li"
-elif O_Tooley > Li > Correy > Khan:
+elif OTooley > Li > Correy > Khan:
     Winner = "O'Tooley"
 
 print("Election Results")
@@ -81,7 +81,7 @@ print("-------------------------------------")
 print(f"Khan: {Khan_format_percent} ({Khan}) ")
 print(f"Correy: {Correy_format_percent} ({Correy})")
 print(f"Li: {Li_format_percent} ({Li})")
-print(f"O'Tooley: {O_Tooley_format_percent} ({O_Tooley})")
+print(f"O'Tooley: {OTooley_format_percent} ({OTooley})")
 print("-------------------------------------")
 print(f"Winner: {Winner}")
 print("-------------------------------------")
@@ -94,7 +94,7 @@ print("-------------------------------------", file=f)
 print(f"Khan: {Khan_format_percent} ({Khan})", file=f)
 print(f"Correy: {Correy_format_percent} ({Correy})", file=f)
 print(f"Li: {Li_format_percent} ({Li})", file=f)
-print(f"O'Tooley: {O_Tooley_format_percent} ({O_Tooley})", file=f)
+print(f"O'Tooley: {OTooley_format_percent} ({OTooley})", file=f)
 print("-------------------------------------", file=f)
 print(f"Winner: {Winner}", file =f)
 print("-------------------------------------", file=f)
