@@ -17,9 +17,6 @@
 import os
 import csv
 
-# Counter is used for the bonus solution
-#from collections import Counter
-
 csvpath = os.path.join("Resources", "election_data.csv")
 txtpath = os.path.join("Analysis", "Voter_Analysis.txt")
 
@@ -33,13 +30,15 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
     #first_data = next(csvreader)   
 
+    #Append the open list variables before the with statement to the corresponding column in the csv. 
     for column in csvreader:
         candidates.append(column[2])
         voters.append(column[0])
 
+#Count the total votes by using len and count (minus the header) all the data in column 0 or the "Voter ID" column
 total_votes = (len(voters))
 
-#count each candidate in the list
+#Count each candidate in the list making variable an integer and then use the count function and count each time a "name" appears 
 Khan = int(candidates.count("Khan"))
 Correy = int(candidates.count("Correy"))
 Li = int(candidates.count("Li"))
@@ -49,7 +48,7 @@ O_Tooley = int(candidates.count("O'Tooley"))
 #print(Li)
 #print(O_Tooley)
 
-#Find percentage of votes each candidate won
+#Find percentage of votes each candidate won, percent = total_votes divided by the variable counted "name". formated to % by googling! 
 Khan_percent = Khan / total_votes
 Khan_format_percent = "{:.3%}".format(Khan_percent)
 
@@ -64,12 +63,13 @@ O_Tooley_format_percent = "{:.3%}".format(O_Tooley_percent)
 
 #print("{:.3%}".format(Khan_percent))
 
-#find the winner based on popular vote - go through each scenario if x > y: winner = "name"
+#Find the winner with if/elif, go through each candidate count and if candidate 1 is greater than candidate 2 > cand 3, 4. 
+# then print winner "name", do the same on next line with candidate 2 in start position, until all 4 scenarios are looked at
 if Khan > Correy > Li > O_Tooley:
     Winner = "Khan"
 elif Correy > Khan > Li > O_Tooley:
     Winner = "Correy"
-elif Li > Correy > Khan > O_Tooley:
+elif Li > Khan > Correy > O_Tooley:
     Winner = "Li"
 elif O_Tooley > Li > Correy > Khan:
     Winner = "O'Tooley"
